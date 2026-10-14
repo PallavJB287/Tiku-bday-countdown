@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Something special is loading...</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --warm-white: #FFF9F5;
+      --peach-soft: #FFE6D8;
+      --peach: #FFC3A5;
+      --peach-deep: #F7977A;
+      --ink: #6B4036;
+      --gold: #FFD98E;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Quicksand", system-ui, sans-serif;
+      font-weight: 600;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, var(--peach-soft) 0, transparent 45%),
+        radial-gradient(circle at 90% 85%, var(--peach-soft) 0, transparent 40%),
+        var(--warm-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* decorations */
+    .star {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
+      opacity: .0;
+      animation: twinkle 3.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: .15;
+        transform: scale(.7);
+      }
+
+      50% {
+        opacity: .95;
+        transform: scale(1.15);
+      }
+    }
+
+    .flower {
+      position: fixed;
+      pointer-events: none;
+      opacity: .85;
+    }
+
+    .flower.f1 {
+      width: 110px;
+      top: -28px;
+      left: -28px;
+    }
+
+    .flower.f2 {
+      width: 80px;
+      top: 22%;
+      right: -22px;
+    }
+
+    .flower.f3 {
+      width: 130px;
+      bottom: -40px;
+      left: 8%;
+    }
+
+    .flower.f4 {
+      width: 64px;
+      bottom: 14%;
+      right: 6%;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 56px 20px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: clamp(30px, 8vw, 46px);
+      line-height: 1.15;
+      margin: 0 0 8px;
+    }
+
+    .sub {
+      margin: 0 0 34px;
+      font-size: 16px;
+      opacity: .85;
+    }
+
+    /* book-spine countdown */
+    .shelf {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 0 12px;
+      border-bottom: 8px solid var(--peach-deep);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .book {
+      width: clamp(62px, 19vw, 98px);
+      padding: 22px 4px 14px;
+      position: relative;
+      border-radius: 14px 14px 3px 3px;
+      background: var(--c);
+      color: var(--ink);
+    }
+
+    .book::before,
+    .book::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: rgba(255, 255, 255, .7);
+    }
+
+    .book::before {
+      top: 9px;
+    }
+
+    .book::after {
+      bottom: 7px;
+    }
+
+    .book:nth-child(1) {
+      --c: #FFC3A5;
+      min-height: 158px;
+    }
+
+    .book:nth-child(2) {
+      --c: #FFD3BC;
+      min-height: 138px;
+    }
+
+    .book:nth-child(3) {
+      --c: #FFB596;
+      min-height: 150px;
+    }
+
+    .book:nth-child(4) {
+      --c: #FFDFCD;
+      min-height: 128px;
+    }
+
+    .book .num {
+      display: block;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 8vw, 44px);
+      line-height: 1.1;
+    }
+
+    .book .lbl {
+      display: block;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .nopeek {
+      margin-top: 18px;
+      font-size: 14px;
+      opacity: .8;
+    }
+
+    /* birthday view */
+    #birthdayView {
+      display: none;
+    }
+
+    .cake {
+      font-size: 54px;
+      margin-bottom: 4px;
+    }
+
+    .note {
+      margin: 26px auto 0;
+      max-width: 520px;
+      padding: 22px 22px 20px;
+      background: var(--white);
+      border-radius: 18px;
+      border: 2px dashed var(--peach);
+      text-align: left;
+      white-space: pre-line;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .alive {
+      margin: 24px 0 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .alive b {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+    }
+
+    button {
+      margin-top: 22px;
+      font: inherit;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--ink);
+      background: var(--peach);
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 24px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--peach-deep);
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    /* birth-time card */
+    .birthcard {
+      margin: 44px auto 0;
+      max-width: 520px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .8);
+      border: 2px solid var(--peach-soft);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .birthcard .t {
+      display: block;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      margin-top: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .star {
+        animation: none;
+        opacity: .5;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- flower shape, reused below -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="flower" viewBox="0 0 100 100">
+      <g fill="#FFC9AE">
+        <circle cx="50" cy="26" r="20" />
+        <circle cx="74" cy="44" r="20" />
+        <circle cx="65" cy="72" r="20" />
+        <circle cx="35" cy="72" r="20" />
+        <circle cx="26" cy="44" r="20" />
+      </g>
+      <circle cx="50" cy="52" r="13" fill="#FFE9A8" />
+    </symbol>
+  </svg>
+  <svg class="flower f1" viewBox="0 0 100 100" aria-hidden="true">
+    <use href="#flower" />
+  </svg>
+  <svg class="flower f2" viewBox="0 0 100 100" aria-hidden="true">
+    <use href="#flower" />
+  </svg>
+  <svg class="flower f3" viewBox="0 0 100 100" aria-hidden="true">
+    <use href="#flower" />
+  </svg>
+  <svg class="flower f4" viewBox="0 0 100 100" aria-hidden="true">
+    <use href="#flower" />
+  </svg>
+
+  <main>
+    <!-- BEFORE midnight on 23 Oct -->
+    <section id="countdownView">
+      <h1><span class="nick">Tiku</span>, chapter 20 begins in...</h1>
+      <p class="sub">Someone is about to turn a very important page 📖</p>
+      <div class="shelf" role="timer" aria-label="Countdown to the birthday">
+        <div class="book"><span class="num" id="d">00</span><span class="lbl">days</span></div>
+        <div class="book"><span class="num" id="h">00</span><span class="lbl">hours</span></div>
+        <div class="book"><span class="num" id="m">00</span><span class="lbl">minutes</span></div>
+        <div class="book"><span class="num" id="s">00</span><span class="lbl">seconds</span></div>
+      </div>
+      <p class="nopeek">(no peeking at the next page before midnight 🙈)</p>
+    </section>
+
+    <!-- FROM midnight on 23 Oct -->
+    <section id="birthdayView">
+      <div class="cake">🎂</div>
+      <h1>Happy Birthday, <span class="nick">Tiku</span>!</h1>
+      <p class="sub">Chapter 20 has officially begun 🌸✨</p>
+      <div class="note" id="message"></div>
+      <p class="alive">You've been in this world for<br>
+        <b id="ad">0</b> days, <b id="ah">0</b> hours, <b id="am">0</b> minutes and <b id="as">0</b> seconds 🌷
+      </p>
+      <button id="moreConfetti" type="button">More confetti, please 🎉</button>
+    </section>
+
+    <!-- birth-time timer (always visible) -->
+    <section class="birthcard">
+      <span id="birthText"></span>
+      <span class="t" id="birthTimer"></span>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js"></script>
+  <script>
+    /* ======== EDIT THESE ======== */
+    const Tiku = "Tiku";
+    const MESSAGE = "Your birthday message goes here.\nYou can use new lines too.\n\n- Your name";
+
+    // All times are IST (+05:30)
+    const BIRTHDAY = new Date("2026-10-23T00:00:00+05:30").getTime(); // main countdown target
+    const BIRTH_TIME = new Date("2026-10-23T09:27:00+05:30").getTime(); // 9:27 am, the time she was born
+    const BORN_AT = new Date("2006-10-23T09:27:00+05:30").getTime(); // exactly 20 years before
+    /* ============================ */
+
+    // Test the page without waiting:  yoursite.netlify.app/?test=before | soon | birthday | after9
+    const test = new URLSearchParams(location.search).get("test");
+    const loadedAt = Date.now();
+    const testBase = {
+      before: BIRTHDAY - (3 * 86400000 + 3725000),
+      soon: BIRTHDAY - 8000,
+      birthday: BIRTHDAY + 5000,
+      after9: BIRTH_TIME + 3600000
+    }[test];
+    const now = () => testBase ? testBase + (Date.now() - loadedAt) : Date.now();
+
+    const $ = id => document.getElementById(id);
+    const pad = n => String(n).padStart(2, "0");
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function parts(ms) {
+      const t = Math.max(0, Math.floor(ms / 1000));
+      return { d: Math.floor(t / 86400), h: Math.floor(t % 86400 / 3600), m: Math.floor(t % 3600 / 60), s: t % 60 };
+    }
+
+    document.querySelectorAll(".nick").forEach(el => el.textContent = Tiku);
+    $("message").textContent = MESSAGE;
+
+    // twinkling stars
+    for (let i = 0; i < 26; i++) {
+      const st = document.createElement("div");
+      st.className = "star";
+      st.style.left = Math.random() * 100 + "vw";
+      st.style.top = Math.random() * 100 + "vh";
+      st.style.animationDelay = (Math.random() * 3.4).toFixed(2) + "s";
+      const size = 6 + Math.random() * 10;
+      st.style.width = st.style.height = size + "px";
+      document.body.appendChild(st);
+    }
+
+    // confetti
+    function burst() {
+      if (!window.confetti || reduceMotion) return;
+      const colors = ["#FFC3A5", "#F7977A", "#FFD98E", "#FFFFFF", "#FFE6D8"];
+      confetti({ particleCount: 110, spread: 80, origin: { y: 0.6 }, colors, shapes: ["star", "circle"] });
+      setTimeout(() => confetti({ particleCount: 60, angle: 60, spread: 60, origin: { x: 0, y: 0.7 }, colors }), 250);
+      setTimeout(() => confetti({ particleCount: 60, angle: 120, spread: 60, origin: { x: 1, y: 0.7 }, colors }), 250);
+    }
+    $("moreConfetti").addEventListener("click", burst);
+
+    let birthdayShown = false;
+
+    function tick() {
+      const t = now();
+
+      // main view: only switches to the birthday view once midnight has passed
+      if (t < BIRTHDAY) {
+        const p = parts(BIRTHDAY - t);
+        $("d").textContent = pad(p.d); $("h").textContent = pad(p.h);
+        $("m").textContent = pad(p.m); $("s").textContent = pad(p.s);
+      } else {
+        if (!birthdayShown) {
+          birthdayShown = true;
+          $("countdownView").style.display = "none";
+          $("birthdayView").style.display = "block";
+          document.title = "Happy Birthday, " + Tiku + "! 🎂";
+          setTimeout(burst, 400);
+        }
+        const a = parts(t - BORN_AT);
+        $("ad").textContent = a.d.toLocaleString("en-IN"); $("ah").textContent = a.h;
+        $("am").textContent = a.m; $("as").textContent = a.s;
+      }
+
+      // birth-time card
+      if (t < BIRTH_TIME) {
+        const p = parts(BIRTH_TIME - t);
+        $("birthText").textContent = "You were born at 9:27 am, so the exact countdown to turning 20 is:";
+        $("birthTimer").textContent = `${p.d}d ${pad(p.h)}h ${pad(p.m)}m ${pad(p.s)}s`;
+      } else {
+        $("birthText").textContent = "At 9:27 am, exactly 20 years ago today, you arrived. You're officially 20!";
+        $("birthTimer").textContent = "🌼";
+      }
+    }
+
+    tick();
+    setInterval(tick, 500);
+  </script>
+</body>
+
+</html>
