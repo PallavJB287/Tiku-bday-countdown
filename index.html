@@ -21,6 +21,7 @@
       --peach-deep: #F7977A;
       --ink: #6B4036;
       --gold: #FFD98E;
+      --peach-hover: #FFB596;
     }
 
     * {
@@ -252,12 +253,48 @@
     }
 
     button:hover {
-      background: var(--peach-deep);
+      background: var(--peach-hover);
     }
 
     button:focus-visible {
       outline: 3px solid var(--ink);
       outline-offset: 3px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 22px;
+      text-decoration: none;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--ink);
+      background: var(--peach);
+      border-radius: 999px;
+      padding: 12px 24px;
+    }
+
+    .btn:hover {
+      background: var(--peach-hover);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    /* row holding the two birthday buttons */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .actions .btn,
+    .actions button {
+      margin-top: 0;
     }
 
     /* birth-time card */
@@ -316,6 +353,17 @@
       width: 12px;
       height: 12px;
       clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
+    }
+
+    @media (max-width: 360px) {
+      .shelf {
+        gap: 6px;
+        padding: 0 6px;
+      }
+
+      .book .lbl {
+        font-size: 12px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -382,7 +430,10 @@
       <p class="alive">You've been in this world for<br>
         <b id="ad">0</b> days, <b id="ah">0</b> hours, <b id="am">0</b> minutes and <b id="as">0</b> seconds 🌷
       </p>
-      <button id="moreConfetti" type="button">More confetti, please 🎉</button>
+      <div class="actions">
+        <a class="btn" id="surpriseBtn" href="surprise.html">One more surprise for you 🎁</a>
+        <button id="moreConfetti" type="button">More confetti, please 🎉</button>
+      </div>
     </section>
 
     <!-- birth-time timer (always visible) -->
@@ -410,13 +461,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js"></script>
   <script>
     /* ======== EDIT THESE ======== */
-    const Tiku = "Tiku";
-    const MESSAGE = "Your birthday message goes here.\nYou can use new lines too.\n\n- Certified Psychopath";
+    const NICKNAME = "Tiku"; // keep identical to the nickname in surprise.html
+
+    // Birthday message, shown only after midnight. Use \n for a new line and \n\n for a blank line.
+    const MESSAGE = "[ADD BIRTHDAY MESSAGE]";
 
     // All times are IST (+05:30)
     const BIRTHDAY = new Date("2026-10-23T00:00:00+05:30").getTime(); // main countdown target
     const BIRTH_TIME = new Date("2026-10-23T09:27:00+05:30").getTime(); // 9:27 am, the time she was born
-    const BORN_AT = new Date("2006-10-23T09:00:00+05:30").getTime(); // exactly 20 years before
+    const BORN_AT = new Date("2006-10-23T09:27:00+05:30").getTime(); // exactly 20 years before
     /* ============================ */
 
     // Test the page without waiting:  yoursite.netlify.app/?test=before | soon | birthday | after9
@@ -439,8 +492,9 @@
       return { d: Math.floor(t / 86400), h: Math.floor(t % 86400 / 3600), m: Math.floor(t % 3600 / 60), s: t % 60 };
     }
 
-    document.querySelectorAll(".nick").forEach(el => el.textContent = Tiku);
+    document.querySelectorAll(".nick").forEach(el => el.textContent = NICKNAME);
     $("message").textContent = MESSAGE;
+    if (test) $("surpriseBtn").href = "surprise.html?test";
 
     // twinkling stars
     for (let i = 0; i < 26; i++) {
@@ -521,7 +575,7 @@
           birthdayShown = true;
           $("countdownView").style.display = "none";
           $("birthdayView").style.display = "block";
-          document.title = "Happy Birthday, " + Tiku + "! 🎂";
+          document.title = "Happy Birthday, " + NICKNAME + "! 🎂";
           setTimeout(burst, 400);
         }
         const a = parts(t - BORN_AT);
