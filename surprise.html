@@ -456,8 +456,8 @@
                 Quiz</button>
             <button role="tab" id="tab-envelopes" aria-controls="envelopes" data-panel="envelopes"
                 aria-selected="false">💌 Open when...</button>
-            <button role="tab" id="tab-reasons" aria-controls="reasons" data-panel="reasons" aria-selected="false">🌸
-                Reasons</button>
+            <button role="tab" id="tab-reasons" aria-controls="reasons" data-panel="reasons" aria-selected="false">🌱
+                Flip-cards</button>
             <button role="tab" id="tab-last" aria-controls="last" data-panel="last" aria-selected="false">📖 Last
                 page</button>
         </nav>
@@ -518,37 +518,37 @@
         // something interesting about her.
         const QUIZ = [
             {
-                q: "[ADD QUIZ QUESTION 1]",
-                options: ["[ADD ANSWER OPTION A]", "[ADD ANSWER OPTION B]", "[ADD ANSWER OPTION C]"],
+                q: "Kot goi furi besi bhaal pua?",
+                options: ["Beaches", "Mountains", "Deserts"],
+                answer: 1,
+                right: "Last time tatei goisila tu.",
+                wrong: "Hosake ne?"
+            },
+            {
+                q: "Name of your designing page.",
+                options: ["Zymoyra", "Johonimora", "Joimaara"],
                 answer: 0,
-                right: "[ADD QUIZ FEEDBACK: CORRECT]",
-                wrong: "[ADD QUIZ FEEDBACK: INCORRECT]"
+                right: "Logo tut je spelling mistake asile, monot aase?",
+                wrong: "Ayo what!"
             },
             {
-                q: "[ADD QUIZ QUESTION 2]",
-                options: ["[ADD ANSWER OPTION A]", "[ADD ANSWER OPTION B]", "[ADD ANSWER OPTION C]"],
-                answer: 0,
-                right: "[ADD QUIZ FEEDBACK: CORRECT]",
-                wrong: "[ADD QUIZ FEEDBACK: INCORRECT]"
-            },
-            {
-                q: "[ADD QUIZ QUESTION 3]",
-                options: ["[ADD ANSWER OPTION A]", "[ADD ANSWER OPTION B]", "[ADD ANSWER OPTION C]"],
+                q: "What will you do if I appear at your house suddenly, out of nowhere?",
+                options: ["Assasinate by stabbing and dump my body", "Serve some tea, or maybe cook something", "Go back to your room and sleep"],
                 answer: null,
-                right: "[ADD QUIZ FEEDBACK]"
+                right: "Janisilue heitu choose koriba buli."
             },
             {
-                q: "[ADD QUIZ QUESTION 4]",
-                options: ["[ADD ANSWER OPTION A]", "[ADD ANSWER OPTION B]", "[ADD ANSWER OPTION C]"],
+                q: "Let's say tumar usorot ₹1 lakh ahi jai, what will you do?",
+                options: ["Gaming accessories kinim", "Korean fried chicken and dher kiba kibi khaba", "Baae khujileo nidia"],
                 answer: null,
-                right: "[ADD QUIZ FEEDBACK]"
+                right: "I trusted you to choose wisely."
             }
         ];
         // Shown at the end, based on the score (only scored questions count)
         const RESULTS = {
-            low: "[ADD QUIZ RESULT: LOW SCORE]",
-            mid: "[ADD QUIZ RESULT: MEDIUM SCORE]",
-            high: "[ADD QUIZ RESULT: FULL SCORE]"
+            low: "Is is ki je hobo nohoi...",
+            mid: "Umm thike asei no...",
+            high: "Kela jiki gol beh..."
         };
 
         // Chapter 2: 'open when' envelopes (2-4 short sentences each)
@@ -556,25 +556,26 @@
         // miss = warmth and company, with no expectation of a reply
         // doubt = grounded encouragement, without exaggerated praise
         const ENVELOPES = [
-            { title: "Open when you're stressed", text: "[ADD OPEN-WHEN MESSAGE: STRESSED]" },
-            { title: "Open when you need a laugh", text: "[ADD OPEN-WHEN MESSAGE: LAUGH]" },
-            { title: "Open when you miss me", text: "[ADD OPEN-WHEN MESSAGE: MISS]" },
-            { title: "Open when you doubt yourself", text: "[ADD OPEN-WHEN MESSAGE: DOUBT]" }
+            { title: "Open when you're stressed", text: "I know you put a lot into the things that matter to you. I hope you remember that your worth isn't measured by how much you get done today. Do one thing at a time, okay?\n\nEven the GOAT can get stressed, cuz we aren't perfect, that's part of what makes us beautiful (tumi).🌷" },
+            { title: "Open when you need a laugh", text: "Whatever happened today, remember that somewhere in this world a pigeon is walking around with the confidence of a CEO despite having absolutely no business plan. Be a little more pigeon.\n\nBhai moi joke nuwaru; ragebait ba insult boni jai, so korbar pora uthaisu...😂" },
+            { title: "Open when you miss me", text: "Some conversations make an ordinary day a little less ordinary. I'm glad we've had some of those. Here's a small reminder of that, for whenever you feel like revisiting it.\n\nPise tumi janae, moi tu yatei asu 24*7 (actually 18*7), ready to listen to your yapping.🫶" },
+            { title: "Open when you doubt yourself", text: "A difficult day is not a verdict on who you are. You can get something wrong, feel uncertain, or need more time without that erasing the things you do well. Be as patient with yourself as you would be with someone you care about.\n\nMoi nijoke kom koru niki, but tumi iman nokoriba ha.👀" },
+            { title: "Open when something good happens", text: "Enjoy it. Cherish it. Live it. 🥳✨ Cuz you deserve good things too, isn't that right?\n\nNohole nakot tel di xui thaka." }
         ];
 
         // Chapter 3: flip cards. `title` is on the front, `text` is on the back. Add or remove cards freely.
         // Theme ideas, one per card: books/stories/ideas, her creative side, her humour or
         // conversation, a quality you admire, a wish for her next year.
         const CARDS = [
-            { title: "[ADD FLIP-CARD TITLE 1]", text: "[ADD FLIP-CARD MESSAGE 1]" },
-            { title: "[ADD FLIP-CARD TITLE 2]", text: "[ADD FLIP-CARD MESSAGE 2]" },
-            { title: "[ADD FLIP-CARD TITLE 3]", text: "[ADD FLIP-CARD MESSAGE 3]" },
-            { title: "[ADD FLIP-CARD TITLE 4]", text: "[ADD FLIP-CARD MESSAGE 4]" },
-            { title: "[ADD FLIP-CARD TITLE 5]", text: "[ADD FLIP-CARD MESSAGE 5]" }
+            { title: "📚 A World Between the Pages", text: "I like that you have a world of your own inside all those books and writings. There's something lovely about someone who keeps making room for new ideas and stories. Aru I see you as an inspiration for this ha—moio etiya besi books pohibo lagibo!📖" },
+            { title: "🎨 Too Many Talents, Too Little Time", text: "I love how your interests aren't limited to one thing. Whether it's writing, cooking, or imagining a design, there's a creative side to you that I hope you always make time for. Pise tumi bonua dher kiba-kibi try koribo aase dei mur, khuaba ne?🍰" },
+            { title: "😂 Our Highly Unprofessional Banter Department", text: "Our conversations would be suspiciously peaceful if we ever stopped roasting each other. I'm not saying you should stop. I'm just saying I reserve the right to file occasional complaints. Itue ituk fotua kotha paati jukai thakim haa gutei raati?🤖" },
+            { title: "✨ A Collection of Random Moments", text: "You have contributed a frankly unreasonable number of memorable moments to my collection of random thoughts, jene...eh ase aru dher kiba-kibi. Hmm etu magic koi ne ki nejanu dei (I might be cooked fr).🌻" },
+            { title: "🌷 A Year That Is Kind to You", text: "I hope this year brings you moments when you can be proud of yourself without immediately moving the goalpost. Bhalke khaba, furiba, furti koriba aru.🎉" }
         ];
 
         // Chapter 4: closing note. Look ahead to her year; don't repeat the main birthday message.
-        const CLOSING = "[ADD FINAL NOTE]";
+        const CLOSING = "Last 6 maah kotha paati bhalei lagile.. aaxa koru je enekei kotha pati thakim.... na na cut off koribo nelage, kotha tu bujisae no...\n\nPise bhaat khala? (eneo cake khabae) Bhalke pet khali hol ne?\n\nSo, the next 12 months are gonna be loaded ones! Dher kiba-kibi ahibo, aru bohut notun experience koriba. Aaxa koru je ei bosor tu tumar babe bhal memories, new experiences aru nijor upor proud feel koriboloi bohut moments loi ahe.🌷✨\n\nI'm glad to know you and I hope we can keep this connection for a long time. Wish I could have sent a gift, but let's save that for the future! Happy birthday again, SilentRebel.exe! 🌸";
         /* ============================================== */
 
         const $ = id => document.getElementById(id);
